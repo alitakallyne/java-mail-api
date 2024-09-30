@@ -33,7 +33,7 @@ public class ObjetoEnviaEmail {
 
 
 
-	public void enviarEmail()  throws Exception{
+	public void enviarEmail(boolean envioHTML)  throws Exception{
 				
 			Properties props = new Properties();
 		    props.put("mail.smtp.ssl.trust", "*");
@@ -62,7 +62,13 @@ public class ObjetoEnviaEmail {
 		    message.setFrom(new InternetAddress(userName,nomeRemetente)); //QUEM ESTA ENVIANDO O EMAIL
 		    message.addRecipients(Message.RecipientType.TO, toUser); //EMAIL DE DESTINO
 		    message.setSubject(assunto); //ASSUNTO DO EMAIL
-		    message.setText(textoEmail);
+		    
+		    if(envioHTML) {
+		    	 message.setContent(textoEmail, "text/html; charset=utf-8");
+		    }else {
+		    	 message.setText(textoEmail);
+		    }
+		   
 		    
 		    Transport.send(message);
 		    
