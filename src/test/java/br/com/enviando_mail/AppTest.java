@@ -24,7 +24,7 @@ public class AppTest {
 				"Testando envio de email com java",
 				stringBuilderTextoEmail.toString());
 	    
-		enviaEmail.enviarEmail(true);
+		enviaEmail.enviarEmailAnexo(true);
 	  
 	}
 	
